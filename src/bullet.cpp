@@ -1,5 +1,5 @@
 #include "bullet.h"
-#include "timer.h"
+
 #include <cmath>
 
 static const double PI = std::atan(1)*4;

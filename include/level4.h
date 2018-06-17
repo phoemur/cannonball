@@ -3,8 +3,7 @@
 
 #include "baselevel.h"
 
-class Level4 : public BaseLevel
-{
+class Level4 : public BaseLevel {
 public:
     Level4();
     virtual void logic() override;

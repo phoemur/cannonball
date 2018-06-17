@@ -1,5 +1,7 @@
 #include "endgame.h"
 
+#include <SDL.h>
+
 EndGame::EndGame()
     : win{MainWindow::instance()}, background{},
       title{}, subtitle{}, copyright{}, f1{}, f2{}, f3{}

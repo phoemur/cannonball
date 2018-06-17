@@ -3,6 +3,7 @@
 
 #include "bullet.h"
 
+#include <SDL.h>
 #include <memory>
 
 enum class GameStates {

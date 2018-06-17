@@ -4,6 +4,7 @@
 #include "texture.h"
 #include "bullet.h"
 
+#include <SDL.h>
 #include <memory>
 
 class Cannon {
@@ -12,13 +13,14 @@ class Cannon {
     double power;
     Texture body;
     Texture foot;
+    SDL_Rect collider;
 public:
     Cannon();
     void setPos(int x, int y);
     void setPower(double p);
     void render();
     void handle_event(SDL_Event& e);
-    SDL_Rect getCollider();
+    const SDL_Rect& getCollider() const noexcept {return collider;}
     std::unique_ptr<Bullet> fire();
 };
 

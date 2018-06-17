@@ -3,6 +3,8 @@
 
 #include "texture.h"
 
+#include "SDL.h"
+
 class House {
     Texture t;
     int mPosX, mPosY;

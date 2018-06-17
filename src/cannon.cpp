@@ -1,11 +1,9 @@
 #include "cannon.h"
 
-#include <SDL.h>
 #include <cmath>
-#include "mainwindow.h"
 
 Cannon::Cannon()
-    : mPosX{0}, mPosY{0}, degrees{0.0}, power{0.0}, body{}, foot{}
+    : mPosX{0}, mPosY{0}, degrees{0.0}, power{0.0}, body{}, foot{}, collider{}
 {
     body.loadFromFile("./cannonball_assets/cannon.png");
     foot.loadFromFile("./cannonball_assets/cannon_foot.png");
@@ -13,8 +11,15 @@ Cannon::Cannon()
 
 void Cannon::setPos(int x, int y)
 {
+    // Set Position
     mPosX = x;
     mPosY = y;
+
+    // Set collider
+    collider.x = mPosX;
+    collider.y = mPosY;
+    collider.w = foot.getWidth();
+    collider.h = foot.getHeight();
 }
 
 void Cannon::setPower(double p)
@@ -69,17 +74,6 @@ void Cannon::handle_event(SDL_Event& e)
         }
 
     }
-}
-
-SDL_Rect Cannon::getCollider()
-{
-    SDL_Rect res;
-    res.x = mPosX;
-    res.y = mPosY;
-    res.w = foot.getWidth();
-    res.h = foot.getHeight();
-
-    return res;
 }
 
 std::unique_ptr<Bullet> Cannon::fire()

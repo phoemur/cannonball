@@ -1,8 +1,6 @@
 #include "font.h"
 #include "exception.h"
 
-#include <algorithm>
-
 Font::Font()
     : gFont{nullptr} {}
 

@@ -1,3 +1,4 @@
+#include "mainwindow.h"
 #include "gamestate.h"
 #include "intro.h"
 #include "level1.h"
