@@ -5,7 +5,7 @@
 static const double PI = std::atan(1)*4;
 
 Bullet::Bullet(double x, double y, double speed, double degrees)
-    : t{}, mPosX{x}, mPosY{y}, mVelX{0}, mVelY{0}, mAccelX{0}, mAccelY{0.098}, collider{}
+    : t{}, mPosX{x}, mPosY{y}, mVelX{0}, mVelY{0}, mAccelX{0}, mAccelY{0.098}, collider{}, particles{nullptr}
 {
     t.loadFromFile("./cannonball_assets/bullet.png");
 
@@ -22,22 +22,16 @@ Bullet::Bullet(double x, double y, double speed, double degrees)
     red.loadFromFile("./cannonball_assets/red.png");
     gray.loadFromFile("./cannonball_assets/gray.png");
     white.loadFromFile("./cannonball_assets/white.png");
-    for (int i=0; i<10; ++i) {
-        particles[i] = new Particle(mPosX, mPosY, &gray, &white, &red);
+    for (auto& part: particles) {
+        part = std::make_unique<Particle>(mPosX, mPosY, &gray, &white, &red);
     }
 
-}
-
-Bullet::~Bullet() noexcept
-{
-    for (int i=0; i<10; ++i) {
-        delete particles[i];
-    }
 }
 
 void Bullet::render()
 {
-    t.render( mPosX - collider.r, mPosY - collider.r );
+    t.render(static_cast<int>(mPosX - collider.r),
+             static_cast<int>(mPosY - collider.r));
 
     renderParticles();
 }
@@ -54,20 +48,18 @@ void Bullet::move()
 
 void Bullet::shiftCollider()
 {
-    collider.x = mPosX;
-    collider.y = mPosY;
+    collider.x = static_cast<int>(mPosX);
+    collider.y = static_cast<int>(mPosY);
 }
 
 void Bullet::renderParticles()
 {
-    for (int i=0; i<10; ++i) {
-        if (particles[i]->isDead()) {
-            delete particles[i];
-            particles[i] = new Particle(mPosX, mPosY, &gray, &white, &red);
+    for (auto& part: particles) {
+        if (part->isDead()) {
+            part.reset(nullptr);
+            part = std::make_unique<Particle>(mPosX, mPosY, &gray, &white, &red);
         }
-    }
 
-    for (int i=0; i<10; ++i) {
-        particles[i]->render();
+        part->render();
     }
 }

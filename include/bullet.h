@@ -4,6 +4,9 @@
 #include "texture.h"
 #include "particle.h"
 
+#include <array>
+#include <memory>
+
 //A circle stucture
 struct Circle {
     int x, y;
@@ -21,17 +24,12 @@ class Bullet {
 
     Texture red{}, white{}, gray{};
 
-    Particle* particles[10];
+    std::array<std::unique_ptr<Particle>, 10> particles;
 
     void shiftCollider();
     void renderParticles();
 public:
     Bullet(double x, double y, double speed, double degrees);
-    ~Bullet() noexcept;
-    Bullet(const Bullet&) = delete;
-    Bullet& operator=(const Bullet&) = delete;
-    Bullet(Bullet&&) = default;
-    Bullet& operator=(Bullet&&) = default;
 
     void render();
     void move();
