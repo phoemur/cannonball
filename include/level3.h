@@ -7,7 +7,6 @@ class Level3 : public BaseLevel
 {
 public:
     Level3();
-    virtual void handle_events() override;
     virtual void logic() override;
 };
 

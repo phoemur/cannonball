@@ -30,37 +30,10 @@ Level5::Level5()
     ground.push_back(std::move(r));
 
     cannon.setPos(60, win.getHeight() - 225);
+    cannon.setPower(10.0);
     house.setPos(win.getWidth() - 70, win.getHeight() - 60);
 }
 
-void Level5::handle_events()
-{
-    SDL_Event e;
-
-    while (SDL_PollEvent(&e) != 0) {
-        if (e.type == SDL_QUIT) {
-            GameState::next_state = GameStates::Quit;
-        }
-        else if (e.type == SDL_KEYDOWN && (e.key.keysym.sym == SDLK_SPACE || e.key.keysym.sym == SDLK_RETURN)) {
-            if (bullet == nullptr) {
-                // fire
-                sound.play();
-                bullet = cannon.fire(10.0);
-            }
-        }
-        else if (e.type == SDL_MOUSEBUTTONDOWN) {
-            if (bullet == nullptr) {
-                // fire
-                sound.play();
-                bullet = cannon.fire(10.0);
-            }
-        }
-        else {
-            // Let the Cannon Handle his movements
-            cannon.handle_event(e);
-        }
-    }
-}
 
 void Level5::logic()
 {

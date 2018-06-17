@@ -5,7 +5,7 @@
 #include "mainwindow.h"
 
 Cannon::Cannon()
-    : mPosX{0}, mPosY{0}, degrees{0.0}, body{}, foot{}
+    : mPosX{0}, mPosY{0}, degrees{0.0}, power{0.0}, body{}, foot{}
 {
     body.loadFromFile("./cannonball_assets/cannon.png");
     foot.loadFromFile("./cannonball_assets/cannon_foot.png");
@@ -15,6 +15,11 @@ void Cannon::setPos(int x, int y)
 {
     mPosX = x;
     mPosY = y;
+}
+
+void Cannon::setPower(double p)
+{
+    power = p;
 }
 
 void Cannon::render()
@@ -77,8 +82,8 @@ SDL_Rect Cannon::getCollider()
     return res;
 }
 
-std::unique_ptr<Bullet> Cannon::fire(double speed)
+std::unique_ptr<Bullet> Cannon::fire()
 {
-    return std::make_unique<Bullet>(mPosX + 9, mPosY + 4, speed, degrees);
+    return std::make_unique<Bullet>(mPosX + 9, mPosY + 4, power, degrees);
 }
 

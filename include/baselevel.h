@@ -25,7 +25,7 @@ protected:
     std::unique_ptr<Bullet> bullet {nullptr};
 public:
     BaseLevel();
-    virtual void handle_events() override = 0;
+    virtual void handle_events() override;
     virtual void logic() override = 0;
     virtual void render() override;
 };
