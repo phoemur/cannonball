@@ -4,12 +4,13 @@
 #include "gamestate.h"
 #include "mainwindow.h"
 #include "texture.h"
+#include "background.h"
 #include "font.h"
 
 
 class Intro : public GameState {
     MainWindow& win;
-    Texture background;
+    Background background;
     Texture title;
     Texture subtitle;
     Font f1, f2;

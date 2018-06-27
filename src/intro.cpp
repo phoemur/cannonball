@@ -9,8 +9,6 @@ Intro::Intro()
     f2.loadFromFile("./cannonball_assets/Purisa-BoldOblique.ttf", 16);
     title.loadFromRenderedText("Welcome to cannonball shooter", f1, SDL_Color{0xFF,0,0,0xFF});
     subtitle.loadFromRenderedText("Press any key to continue...", f2, SDL_Color{0,0,0,0xFF});
-
-    background.loadFromFile("./cannonball_assets/clouds.jpg");
 }
 
 void Intro::handle_events()
@@ -32,7 +30,8 @@ void Intro::logic() {}
 void Intro::render()
 {
     win.clear();
-    background.render(0, 0);
+    background.render();
+    background.scroll();
     title.render((win.getWidth() - title.getWidth()) / 2, (win.getHeight() - title.getHeight()) / 2);
     subtitle.render((win.getWidth() - subtitle.getWidth()) / 2,
                     (win.getHeight() + title.getHeight() - subtitle.getHeight()) / 2 );

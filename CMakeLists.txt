@@ -30,6 +30,7 @@ set(SOURCES
     src/level4.cpp
     src/level5.cpp
     src/endgame.cpp
+    src/background.cpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES})

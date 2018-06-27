@@ -4,7 +4,7 @@
 
 #include "gamestate.h"
 #include "mainwindow.h"
-#include "texture.h"
+#include "background.h"
 #include "cannon.h"
 #include "house.h"
 #include "music.h"
@@ -17,7 +17,7 @@
 class BaseLevel : public GameState {
 protected:
     MainWindow& win;
-    Texture background;
+    Background background;
     std::vector<SDL_Rect> ground;
     Cannon cannon;
     House house;

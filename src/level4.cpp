@@ -43,7 +43,7 @@ void Level4::logic()
             Texture temp{};
             Font f {"./cannonball_assets/Purisa-BoldOblique.ttf", 20};
             temp.loadFromRenderedText("You hit it!!!! Get ready for level 5...", f, SDL_Color{0xFF,0,0,0xFF});
-            background.render(0,0);
+            background.render();
             temp.render((win.getWidth() - temp.getWidth()) / 2, (win.getHeight() - temp.getHeight()) / 2);
             win.update();
             SDL_Delay(2000);
