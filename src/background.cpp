@@ -1,9 +1,9 @@
 #include "background.h"
 
-Background::Background()
+Background::Background(const std::string& path)
     : t{}, scrollingOffset{0}
 {
-    t.loadFromFile("./cannonball_assets/clouds.jpg");
+    t.loadFromFile(path);
 }
 
 void Background::render()

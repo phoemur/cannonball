@@ -3,11 +3,13 @@
 
 #include "texture.h"
 
+#include <string>
+
 class Background {
     Texture t;
     int scrollingOffset;
 public:
-    Background();
+    Background(const std::string& path);
 
     void render();
     void scroll();

@@ -2,7 +2,7 @@
 
 BaseLevel::BaseLevel()
     : win{MainWindow::instance()},
-      background{},
+      background{"./cannonball_assets/clouds.jpg"},
       ground{},
       cannon{},
       house{},

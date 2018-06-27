@@ -3,7 +3,12 @@
 #include <SDL.h>
 
 Intro::Intro()
-    : win{MainWindow::instance()}, background{}, title{}, subtitle{}, f1{}, f2{}
+    : win{MainWindow::instance()},
+      background{"./cannonball_assets/clouds.jpg"},
+      title{},
+      subtitle{},
+      f1{},
+      f2{}
 {
     f1.loadFromFile("./cannonball_assets/Purisa-BoldOblique.ttf", 30);
     f2.loadFromFile("./cannonball_assets/Purisa-BoldOblique.ttf", 16);
